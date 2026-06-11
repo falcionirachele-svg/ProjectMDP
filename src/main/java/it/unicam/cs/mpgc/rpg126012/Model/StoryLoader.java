@@ -20,7 +20,7 @@ public class StoryLoader {
         //carica il file json nella variabile root
         JsonObject root= jsonLoader.loadFile(jsonPath);
         //uso il metodo di nodefactory che mi restituisce la mappa di nemici
-        Map<String, Enemy> enemyMap=nodeFactory.buildEnemyArray(root.getAsJsonArray("nemico"));
+        Map<String, Enemy> enemyMap=nodeFactory.buildEnemyArray(root.getAsJsonArray("enemy"));
         //richiamo un metodo che mi crea una mappa di nodi
         Map<String, StoryNode> nodeMap= buildNodeMap(root, enemyMap);
         //chiamo un metodo che mi crea i collegamenti tra i vari nodi
@@ -67,10 +67,14 @@ public class StoryLoader {
     }
     //meotodo per recuperare il nodo iniziale
     private StoryNode getStartNode(Map<String, StoryNode> nodeMap, JsonObject root) throws Exception{
+        //verifico che la chiave di inizio ci sia nel json
+        if (!root.has("start") || root.get("start").isJsonNull()) {
+            throw new Exception("Errore nel JSON: manca la chiave 'start'!");
+        }
         String startId = root.get("start").getAsString();
         StoryNode startNode= nodeMap.get(startId);
         if(startNode==null){
-            throw new Exception("Nodo di partenza non trovato"+ startId);
+            throw new Exception("Nodo di partenza non trovato "+ startId);
         }
         return startNode;
     }

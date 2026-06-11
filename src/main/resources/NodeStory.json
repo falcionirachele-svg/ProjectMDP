@@ -1,7 +1,8 @@
 {
+  "start": "inizio",
   "nodes": [
     {
-      "id": "start",
+      "id": "inizio",
       "type": "dialogue",
       "text": "Ti trovi all'ingresso di una caverna oscura. Senti rumori provenire dall'interno. Decidi di entrare?",
       "nodoA": "caverna",
@@ -49,7 +50,7 @@
       "type": "dialogue",
       "text": "Raggiungi una taverna, decidi di entrare?",
       "nodoA": "fine",
-      "nodoB": "giagante"
+      "nodoB": "gigante"
     },
     {
       "id": "gigante",

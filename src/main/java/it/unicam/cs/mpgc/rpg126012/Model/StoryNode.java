@@ -5,6 +5,8 @@ package it.unicam.cs.mpgc.rpg126012.Model;
 public interface StoryNode {
     //metodo per ottenere testo delle storia e i testi delle due opzioni
     String getDescription();
+    //metodo per ottenere le opzioni
+    String getOptions();
     //metodo che restituisce l'ID del prossimo nodo in base alla scelta dell'utente
     StoryNode getNextNode(int choiceIndex);
     void setNodoA(StoryNode nodo);

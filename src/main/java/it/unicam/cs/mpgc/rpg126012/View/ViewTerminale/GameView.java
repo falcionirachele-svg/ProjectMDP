@@ -10,7 +10,7 @@ public class GameView {
 
     //metodo per stampare
     public void mostraTesto(String testo){
-        System.out.println("\n" + testo + "\n");
+        System.out.println("  " + testo + "  ");
     }
     //metodo per prendere input utente
     public int leggiScelta(){

@@ -8,6 +8,9 @@ public class StoryData {
         this.nodeMap=nodeMap;
         this.startNode=startNode;
     }
+    public StoryNode getNodoIniziale(){
+        return startNode;
+    }
     public Map<String, StoryNode> getNodeMap() {
         return nodeMap;
     }

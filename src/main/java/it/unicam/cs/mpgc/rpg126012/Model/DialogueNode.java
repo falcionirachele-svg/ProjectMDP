@@ -15,10 +15,17 @@ public class DialogueNode implements StoryNode {
     }
     @Override
     public String getDescription() {
-        return text+"\n\n" +
-                "1.Si\n" +
-                "2.No";
+        return "\n"+text+"\n";
     }
+    public String getOptions(){
+        return "1. Si\n"
+                +"  2. No";
+    }
+    /**
+     * get next node based on user choice
+     * @param choiceIndex (0 or 1)
+     * @return next node or null if choice is invalid
+     */
     @Override
     public StoryNode getNextNode(int choiceIndex) {
         if(choiceIndex==0) return nextNodeA;
