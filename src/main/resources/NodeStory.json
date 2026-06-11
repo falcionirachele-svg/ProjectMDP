@@ -1,0 +1,88 @@
+{
+  "nodes": [
+    {
+      "id": "start",
+      "type": "dialogue",
+      "text": "Ti trovi all'ingresso di una caverna oscura. Senti rumori provenire dall'interno. Decidi di entrare?",
+      "nodoA": "caverna",
+      "nodoB": "cammino"
+    },
+    {
+      "id": "caverna",
+      "type": "combat",
+      "text": "Hai scelto di entrare nella caverna. Ti ritrovi un orco davanti",
+      "nemico": "orco",
+      "nodoA": "missione",
+      "nodoB": "cammino"
+    },
+    {
+      "id": "cammino",
+      "type": "dialogue",
+      "text": "Mentre cammini, incontri un vecchio che provo a parlarti. Decidi di ascoltarlo?",
+      "nodoA": "missione",
+      "nodoB": "drago"
+    },
+    {
+      "id": "missione",
+      "type": "dialogue",
+      "text": "Il vecchio ti chiede di recuperare un oggetto prezioso. Decidi di seguire la sua missione?",
+      "nodoA": "oggetto",
+      "nodoB": "drago"
+    },
+    {
+      "id": "drago",
+      "type": "combat",
+      "text": "Un enorme drago rosso ti sbarra la strada.",
+      "nemico": "drago",
+      "nodoA": "fine",
+      "nodoB": "taverna"
+    },
+    {
+      "id": "oggetto",
+      "type": "dialogue",
+      "text": "Vedi una gemma brillante. Provi a prenderla?",
+      "nodoA": "fine",
+      "nodoB": "taverna"
+    },
+    {
+      "id": "taverna",
+      "type": "dialogue",
+      "text": "Raggiungi una taverna, decidi di entrare?",
+      "nodoA": "fine",
+      "nodoB": "giagante"
+    },
+    {
+      "id": "gigante",
+      "type": "combat",
+      "text": "Ti ritrovi un gigante in mezzo al cammino.",
+      "nemico": "gigante",
+      "nodoA": "fine",
+      "nodoB": "oggetto"
+    },
+    {
+      "id": "fine",
+      "type": "dialogue",
+      "text": "Hai raggiunto la fine del tuo viaggio."
+    }
+  ],
+  "enemy": [
+    {
+      "id": "orco",
+      "nome": "Orco",
+      "health": 100,
+      "damage": 10
+    },
+    {
+      "id": "drago",
+    "nome": "Drago",
+    "health": 150,
+    "damage": 20
+    },
+    {
+      "id": "gigante",
+      "nome": "Gigante",
+      "health": 150,
+      "damage": 30
+    }
+  ]
+}
