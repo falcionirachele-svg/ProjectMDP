@@ -38,6 +38,15 @@ public class CombatNode implements StoryNode {
         if(choiceIndex==1) return nextNodeB;
         return null;
     }
+    public StoryNode getNextNodeA(){
+        return nextNodeA;
+    }
+    public StoryNode getNextNodeB(){
+        return nextNodeB;
+    }
+    public boolean isLastNode(){
+        return nextNodeA==null && nextNodeB==null;
+    }
     public void setNodoA(StoryNode nodo){
         this.nextNodeA= nodo;
     }

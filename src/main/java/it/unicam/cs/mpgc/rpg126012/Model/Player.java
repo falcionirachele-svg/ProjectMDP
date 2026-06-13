@@ -10,6 +10,7 @@ public class Player {
         this.name=name;
         this.maxHealt=maxHealt;
         this.damage=damage;
+        this.currentHealth=maxHealt;
     }
     public int getCurrentHealth() {
         return currentHealth;

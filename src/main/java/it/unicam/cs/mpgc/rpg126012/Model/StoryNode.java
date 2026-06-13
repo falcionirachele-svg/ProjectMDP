@@ -12,4 +12,5 @@ public interface StoryNode {
     void setNodoA(StoryNode nodo);
     void setNodoB(StoryNode nodo);
     String getId();
+    public boolean isLastNode();
 }

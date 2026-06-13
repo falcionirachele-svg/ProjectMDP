@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 
 
 /*classe che si occupa di collegare i nodi creati dal NodeFactory,
-* e recupera il nodo di partenza*/
+* recupera il nodo di partenza e collega i nodi a quelli successivi*/
 public class StoryLoader {
     //classe per salvare solo id del nodo e destinazioni
     private static class RawNode{
@@ -35,7 +35,7 @@ public class StoryLoader {
     private Map<String, StoryNode> buildNodeMap(JsonObject root, Map<String, Enemy> enemyMap)
         throws Exception{
         Map<String, StoryNode> nodeMap=new HashMap<>();
-        //prendo tutti gli elementi nodi
+        //prendo tutti gli elementi nodi, li creo con il nodefactory e li aggiungo alla mappa
         for(JsonElement el: root.getAsJsonArray("nodes")){
             StoryNode node= nodeFactory.buildNode(el.getAsJsonObject(), enemyMap);
             nodeMap.put(node.getId(), node);
@@ -51,6 +51,7 @@ public class StoryLoader {
             RawNode raw= gson.fromJson(el, RawNode.class);
             //recupero nodo in memoria
             StoryNode node=nodeMap.get(raw.id);
+            //imposta i nodi successivi letti dal json
             node.setNodoA(resolve(nodeMap, raw.nodoA, raw.id, "nodoA"));
             node.setNodoB(resolve(nodeMap, raw.nodoB, raw.id, "nodoB"));
         }

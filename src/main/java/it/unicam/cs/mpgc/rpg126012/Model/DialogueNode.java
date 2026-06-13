@@ -21,11 +21,9 @@ public class DialogueNode implements StoryNode {
         return "1. Si\n"
                 +"  2. No";
     }
-    /**
-     * get next node based on user choice
-     * @param choiceIndex (0 or 1)
-     * @return next node or null if choice is invalid
-     */
+    public boolean isLastNode(){
+        return nextNodeA==null && nextNodeB==null;
+    }
     @Override
     public StoryNode getNextNode(int choiceIndex) {
         if(choiceIndex==0) return nextNodeA;

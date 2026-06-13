@@ -14,9 +14,6 @@ public class StoryData {
     public Map<String, StoryNode> getNodeMap() {
         return nodeMap;
     }
-    public StoryNode getStartNode() {
-        return startNode;
-    }
     public StoryNode getNode(String id){
         return nodeMap.get(id);
     }
