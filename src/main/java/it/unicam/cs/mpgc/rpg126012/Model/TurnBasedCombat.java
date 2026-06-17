@@ -50,5 +50,8 @@ public class TurnBasedCombat {
     public int getDannoRicevuto() {
         return dannoRicevuto;
     }
+    public boolean dannoCritico() {
+        return player.getColpoCritico();
+    }
 
 }
