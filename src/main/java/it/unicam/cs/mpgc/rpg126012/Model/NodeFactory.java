@@ -23,6 +23,7 @@ public class NodeFactory {
         return switch (type){
             case "combat"->buildCombat(obj, id, enemyMap);
             case "dialogue"->gson.fromJson(obj, DialogueNode.class);
+            case "riddle"->gson.fromJson(obj, RiddleNode.class);
             default->throw new Exception("Tipo di nodo non valido"+type);
         };
     }

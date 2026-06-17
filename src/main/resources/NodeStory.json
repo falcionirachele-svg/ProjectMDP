@@ -50,20 +50,50 @@
       "type": "dialogue",
       "text": "Raggiungi una taverna, decidi di entrare?",
       "nodoA": "fine",
-      "nodoB": "gigante"
+      "nodoB": "nano"
     },
     {
       "id": "gigante",
       "type": "combat",
       "text": "Ti ritrovi un gigante in mezzo al cammino.",
       "nemico": "gigante",
-      "nodoA": "fine",
+      "nodoA": "mago",
       "nodoB": "oggetto"
     },
     {
       "id": "fine",
       "type": "dialogue",
       "text": "Hai raggiunto la fine del tuo viaggio."
+    },
+    {
+      "id": "mago",
+      "type": "dialogue",
+      "text": "Un mago ti vuole fare un indovinello. Decidi di rispondere?",
+      "nodoA": "indovinelloMago",
+      "nodoB": "fine"
+    },
+    {
+      "id": "indovinelloMago",
+      "type": "riddle",
+      "text": "Ha città ma non ha case. Ha montagne ma non ha alberi. Ha acqua ma non ha pesci. Che cos'è?",
+      "answers": ["Un deserto", "Una mappa", "Uno specchio", "Un miraggio"],
+      "rightAnswer": 1,
+      "nodoA": "fine"
+    },
+    {
+      "id": "nano",
+      "type": "dialogue",
+      "text": "Un nano ti dice che per passare devi rispondere. Accetti?",
+      "nodoA": "indovinelloNano",
+      "nodoB": "gigante"
+    },
+    {
+      "id": "indovinelloNano",
+      "type": "riddle",
+      "text": "Non ha voce, ma grida. Non ha ali, ma vola. Non ha denti, ma morde. Non ha bocca, ma sussurra. Chi è?",
+      "answers": ["Il Vento", "La Freccia", "Il Fantasma", "Il Pipistrello"],
+      "rightAnswer": 0,
+      "nodoA": "oggetto"
     }
   ],
   "enemy": [
