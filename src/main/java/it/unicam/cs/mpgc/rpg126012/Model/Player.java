@@ -3,19 +3,24 @@ package it.unicam.cs.mpgc.rpg126012.Model;
 import java.util.Random;
 
 public class Player {
+    public String id;
     public String name;
     public int maxHealt;
     public int currentHealth;
     public int baseDamage;
-    public Random random;//per generare numeri casuali per rendere danni variabili
+    public transient Random random;//per generare numeri casuali per rendere danni variabili
     public boolean colpoCritico=false;//se i danni raddoppiano
-    public Player(String name, int maxHealt, int baseDamage){
+    public Player(){}
+    public Player(String id, String name, int maxHealt, int baseDamage){
+        this.id=id;
         this.name=name;
         this.maxHealt=maxHealt;
         this.baseDamage=baseDamage;
         this.currentHealth=maxHealt;
         this.random=new Random();
     }
+
+    public String getId() {return id;}
     public int getCurrentHealth() {
         return currentHealth;
     }

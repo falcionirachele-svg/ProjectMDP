@@ -21,6 +21,8 @@ public class StoryLoader {
         JsonObject root= jsonLoader.loadFile(jsonPath);
         //uso il metodo di nodefactory che mi restituisce la mappa di nemici
         Map<String, Enemy> enemyMap=nodeFactory.buildEnemyArray(root.getAsJsonArray("enemy"));
+        //uso il metodo di nodefactory per restituire una mappa di player che potrò usare nelle future implementazioni
+        Map<String, Player> playerMap= nodeFactory.buildPlayerArray(root.getAsJsonArray("player"));
         //richiamo un metodo che mi crea una mappa di nodi
         Map<String, StoryNode> nodeMap= buildNodeMap(root, enemyMap);
         //chiamo un metodo che mi crea i collegamenti tra i vari nodi
@@ -30,7 +32,13 @@ public class StoryLoader {
         //con queste informazioni genero lo StoryData
         return new StoryData(nodeMap, startNode);
     }
+    //metodo per ottenere la mappa dei player
+    /*per implementazioni future: mi permette di ottenere dei personaggi standard nel json,
+    * che possono essere selezionati in futuro dalla view */
+    public Map<String, Player> getAlPlayerMap(Map<String, Player>playerMap){
+        return playerMap;
 
+    }
     //metodo per creare la mappa di nodi
     private Map<String, StoryNode> buildNodeMap(JsonObject root, Map<String, Enemy> enemyMap)
         throws Exception{

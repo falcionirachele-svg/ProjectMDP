@@ -27,8 +27,8 @@ public class App extends Application {
             Parent root = loader.load();
             //prendo il controller dal file fxml
             GameControllerFX controller = loader.getController();
-            //creo il giocatore
-            Player player = new Player("Giocatore",180,20);
+            //genero un Player preimpostato
+            Player player= new Player("giocatore", "Giocatore", 180, 20);
             //inizio il gioco
             controller.startGame(nodoPartenza, player);
             //creo la scena e la setto

@@ -14,6 +14,16 @@ public class NodeFactory {
         }
         return enemyMap;
     }
+    //metodo per costruire un array di player dal file dei player json
+    public Map<String, Player> buildPlayerArray(JsonArray playerArray){
+        Map<String, Player> playerMap= new HashMap<>();
+        //ogni elemento lo vado a creare e lo metto nel map
+        for(JsonElement el: playerArray){
+            Player p= gson.fromJson(el, Player.class);
+            playerMap.put(p.getId(), p);
+        }
+        return playerMap;
+    }
     //metodo per costruire i nodi del file json
     public StoryNode buildNode(JsonObject obj, Map<String, Enemy> enemyMap) throws Exception{
         //converto le info tipo e id json in stringhe

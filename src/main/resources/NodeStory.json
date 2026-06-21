@@ -115,5 +115,13 @@
       "health": 150,
       "damage": 30
     }
+  ],
+  "player": [
+    {
+      "id": "giocatore1",
+      "nome": "Giocatore1",
+      "maxHealt": 180,
+      "baseDamage": 20
+    }
   ]
 }
