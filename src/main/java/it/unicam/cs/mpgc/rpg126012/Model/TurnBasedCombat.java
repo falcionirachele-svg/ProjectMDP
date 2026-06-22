@@ -1,57 +1,54 @@
 package it.unicam.cs.mpgc.rpg126012.Model;
 
 public class TurnBasedCombat {
-    public Enemy enemy;
-    public Player player;
-    public boolean win;
+    public Character character1;
+    public Character character2;
     public int dannoRicevuto;
     public int dannoInflitto;
+    public Risultato risultato;
     public TurnBasedCombat(){}
-    public TurnBasedCombat(Enemy enemy, Player player) {
-        this.enemy = enemy;
-        this.player = player;
+    public TurnBasedCombat(Character enemy, Character player) {
+        this.character1 = enemy;
+        this.character2 = player;
+        //istanzio localmente il risultato del turno
+        risultato= new RisultatoTurno(character2.getMaxHealth(),character1.getMaxHealth());
     }
 
-    public RisultatoTurno eseguiTurno() {
+    public Risultato eseguiTurno() {
         //verifico che nessuno dei due sia senza vita
-        if(!enemy.isAlive() || !player.isAlive()){
+        if(risultato.endBattle()){
             fineCombattimento();
             //se il combattimento finisce restituisco null
             return null;
         }
         //il nemico attacca il giocatore
-        player.setCurrentHealth(player.getCurrentHealth() - enemy.getDamage());
-        dannoRicevuto=enemy.getDamage();
+        dannoRicevuto=character1.getDamage();
+        character2.setCurrentHealth(character2.getCurrentHealth() - dannoRicevuto);
         //il giocatore attacca il nemico
-        enemy.setHealth(enemy.getHealth() - player.getDamage());
-        dannoInflitto=player.getDamage();
-        RisultatoTurno risultatoTurno= new RisultatoTurno(player.getCurrentHealth(), enemy.getHealth());
-        risultatoTurno.setEnemyDamage(getDannoRicevuto());
-        risultatoTurno.setPlayerDamage(getDannoInflitto());
-        return risultatoTurno;
+        dannoInflitto=character2.getDamage();
+        character1.setCurrentHealth(character1.getCurrentHealth() - dannoInflitto);
+
+        Risultato risultato= new RisultatoTurno(character2.getCurrentHealth(), character1.getCurrentHealth());
+        risultato.setEnemyDamage(getDannoRicevuto());
+        risultato.setPlayerDamage(getDannoInflitto());
+        //aggiorno variabile locale con risultato ottenuto
+        this.risultato=risultato;
+        return risultato;
     }
     public void fineCombattimento(){
-        if(player.isAlive()){
-            win=true;
-        }else{
-            win=false;
-        }
         //una volta terminato il combattimento il giocatore torna ad avere la massima salute
         //per future implementazioni si possono introdurre cure durante la storia e non resettare la salute
-        player.setCurrentHealth(player.getMaxHealt());
+        character2.setCurrentHealth(character2.getMaxHealth());
     }
-    public boolean endBattle() {
-        if(!player.isAlive() || !enemy.isAlive()) return true;
-        return false;
-    }
+
     public int getDannoInflitto() {
         return dannoInflitto;
     }
     public int getDannoRicevuto() {
         return dannoRicevuto;
     }
-    public boolean dannoCritico() {
-        return player.getColpoCritico();
+    public boolean isPlayerWin() {
+        return risultato.isPlayerWin();
     }
 
 }

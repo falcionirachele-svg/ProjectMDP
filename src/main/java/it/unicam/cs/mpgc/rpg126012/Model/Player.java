@@ -2,7 +2,7 @@ package it.unicam.cs.mpgc.rpg126012.Model;
 
 import java.util.Random;
 
-public class Player {
+public class Player extends Character {
     public String id;
     public String name;
     public int maxHealt;
@@ -10,25 +10,15 @@ public class Player {
     public int baseDamage;
     public transient Random random;//per generare numeri casuali per rendere danni variabili
     public boolean colpoCritico=false;//se i danni raddoppiano
-    public Player(){}
     public Player(String id, String name, int maxHealt, int baseDamage){
-        this.id=id;
-        this.name=name;
-        this.maxHealt=maxHealt;
-        this.baseDamage=baseDamage;
+        super(id, name, maxHealt, baseDamage);
         this.currentHealth=maxHealt;
         this.random=new Random();
     }
 
-    public String getId() {return id;}
-    public int getCurrentHealth() {
-        return currentHealth;
-    }
-    public void setCurrentHealth(int currentHealth) {
-        this.currentHealth = currentHealth;
-    }
     //il danno del giocatore oscilla di 10 punti
     //c'è poi un 15% di possibilità che il danno raddoppi
+    @Override
     public int getDamage() {
         int dannoMin= baseDamage-10;
         int dannoMax= baseDamage+10;
@@ -41,25 +31,13 @@ public class Player {
         colpoCritico=false;
         return dannoCasuale;
     }
+    @Override
     public boolean getColpoCritico() {
         return colpoCritico;
     }
-    public void setDamage(int damage) {
-        this.baseDamage = damage;
+    @Override
+    public boolean isPlayer() {
+        return true;
     }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public int getMaxHealt() {
-        return maxHealt;
-    }
-    public void setMaxHealt(int maxHealt) {
-        this.maxHealt = maxHealt;
-    }
-    public boolean isAlive() {
-        return currentHealth > 0;
-    }
+
 }
