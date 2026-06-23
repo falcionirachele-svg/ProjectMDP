@@ -32,12 +32,34 @@ public class RiddleNode implements StoryNode{
         if(choiceIndex==0) return nextNodeA;
         return null;
     }
+
     public String[] arrayAnswers(){
         if(answers==null) return  new String[0];
         return answers.toArray(new String[0]);
     }
+    public boolean isRightAnswer(int answer){
+        return answer==rightAnswer;
+    }
+    public void setRightAnswer(int rightAnswer) {
+        this.rightAnswer = rightAnswer;
+    }
+    public void setAnswers(List<String> answers) {
+        this.answers = answers;
+    }
+    public void setText(String text) {
+        this.text = text;
+    }
+    public int getRightAnswer() {
+        return rightAnswer;
+    }
+    @Override
     public void setNodoA(StoryNode nodo){
         this.nextNodeA= nodo;
+    }
+    //non ha un riferimento al nodoB
+    @Override
+    public void setNodoB(StoryNode nextNodeB){
+
     }
 
 }

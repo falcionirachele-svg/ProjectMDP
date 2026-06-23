@@ -10,5 +10,7 @@ public interface StoryNode {
     //metodo che restituisce l'ID del prossimo nodo in base alla scelta dell'utente
     StoryNode getNextNode(int choiceIndex);
     String getId();
+    void setNodoA(StoryNode nodoA);
+    void setNodoB(StoryNode nodoB);
     public boolean isLastNode();
 }

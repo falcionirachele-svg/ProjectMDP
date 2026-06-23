@@ -1,12 +1,9 @@
 package it.unicam.cs.mpgc.rpg126012;
-
-import it.unicam.cs.mpgc.rpg126012.Controller.ControllerSceneBuilder.GameControllerFX;
-import it.unicam.cs.mpgc.rpg126012.Controller.ControllerTerminale.GameController;
+import it.unicam.cs.mpgc.rpg126012.Controller.GameControllerFX;
 import it.unicam.cs.mpgc.rpg126012.Model.Player;
 import it.unicam.cs.mpgc.rpg126012.Model.StoryData;
 import it.unicam.cs.mpgc.rpg126012.Model.StoryLoader;
 import it.unicam.cs.mpgc.rpg126012.Model.StoryNode;
-import it.unicam.cs.mpgc.rpg126012.View.ViewTerminale.GameView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

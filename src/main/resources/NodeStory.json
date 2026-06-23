@@ -99,19 +99,19 @@
   "enemy": [
     {
       "id": "orco",
-      "nome": "Orco",
+      "name": "Orco",
       "health": 100,
       "damage": 10
     },
     {
       "id": "drago",
-    "nome": "Drago",
+    "name": "Drago",
     "health": 150,
     "damage": 20
     },
     {
       "id": "gigante",
-      "nome": "Gigante",
+      "name": "Gigante",
       "health": 150,
       "damage": 30
     }
@@ -119,9 +119,9 @@
   "player": [
     {
       "id": "giocatore1",
-      "nome": "Giocatore1",
-      "maxHealt": 180,
-      "baseDamage": 20
+      "name": "Giocatore1",
+      "healt": 180,
+      "damage": 20
     }
   ]
 }

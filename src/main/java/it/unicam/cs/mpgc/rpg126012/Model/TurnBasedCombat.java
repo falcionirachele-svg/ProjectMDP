@@ -17,8 +17,10 @@ public class TurnBasedCombat {
     public Risultato eseguiTurno() {
         //verifico che nessuno dei due sia senza vita
         if(risultato.endBattle()){
-            fineCombattimento();
-            //se il combattimento finisce restituisco null
+            //una volta terminato il combattimento il giocatore torna ad avere la massima salute
+            //per future implementazioni si possono introdurre cure durante la storia e non resettare la salute
+            character2.setCurrentHealth(character2.getMaxHealth());
+            //quando il combattimento finisce restituisco null
             return null;
         }
         //il nemico attacca il giocatore
@@ -35,10 +37,9 @@ public class TurnBasedCombat {
         this.risultato=risultato;
         return risultato;
     }
-    public void fineCombattimento(){
-        //una volta terminato il combattimento il giocatore torna ad avere la massima salute
-        //per future implementazioni si possono introdurre cure durante la storia e non resettare la salute
-        character2.setCurrentHealth(character2.getMaxHealth());
+    public boolean fineCombattimento(){
+        if(risultato.endBattle()) return true;
+        else  return false;
     }
 
     public int getDannoInflitto() {

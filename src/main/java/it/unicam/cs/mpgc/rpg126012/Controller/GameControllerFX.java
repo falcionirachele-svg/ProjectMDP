@@ -73,9 +73,7 @@ public class GameControllerFX {
             aggiornaSchermata(nodoCorrente.getNextNode(0));
         }
         else if(nodoCorrente instanceof CombatNode){
-            CombatNode combatNode = (CombatNode) nodoCorrente;
-            GestoreCombattimenti gestoreCombattimenti=new GestoreCombattimenti(player, combatNode.getEnemy());
-            testoStoria.setText(gestoreCombattimenti.getCombat());
+            gestisciCombattimento();
         }
         else if(nodoCorrente instanceof RiddleNode){
             gestisciIndovinello(0);
@@ -87,23 +85,49 @@ public class GameControllerFX {
     }
     @FXML
     public void scelta2Click(){
-        if(nodoCorrente instanceof RiddleNode) gestisciIndovinello(1);
-        else{
+        if(nodoCorrente instanceof RiddleNode){
+            gestisciIndovinello(1);
+        }else{
             aggiornaSchermata(nodoCorrente.getNextNode(1));
         }
     }
     @FXML
     public void scelta3Click(){
-        if(nodoCorrente instanceof RiddleNode) gestisciIndovinello(2);
-        else{
+        if(nodoCorrente instanceof RiddleNode){
+            gestisciIndovinello(2);
+        }else{
             aggiornaSchermata(nodoCorrente.getNextNode(2));
         }
     }
     @FXML
     public void scelta4Click(){
-        if(nodoCorrente instanceof RiddleNode) gestisciIndovinello(3);
-        else{
+        if(nodoCorrente instanceof RiddleNode){
+            gestisciIndovinello(3);
+        }else{
             aggiornaSchermata(nodoCorrente.getNextNode(3));
+        }
+    }
+    private void gestisciCombattimento(){
+        CombatNode combatNode=(CombatNode) nodoCorrente;
+        GestoreCombattimenti gestoreCombattimento=new GestoreCombattimenti(player, combatNode.getEnemy());
+        gestoreCombattimento.eseguiTurno();
+        testoStoria.appendText(gestoreCombattimento.testoBattle());
+        if(gestoreCombattimento.endBattle()){
+            if(player.isAlive())impostaBottoni(new String[] {"Avanti"});
+            else impostaBottoni(new String[] {"Fine"});
+
+        }
+    }
+    private void gestisciIndovinello(int answer){
+        RiddleNode riddleNode =(RiddleNode) nodoCorrente;
+        GestoreIndovinelli gestoreIndovinelli= new GestoreIndovinelli(riddleNode, answer);
+        if(gestoreIndovinelli.isIndovinato()){
+            testoStoria.setText(nodoCorrente.getDescription()+"\n\n"+gestoreIndovinelli.testoIndovinello());
+            //se indovino il bottone diventa Avanti
+            impostaBottoni(new String[] {"Avanti"});
+        }else{
+            //se non ho indovinato rimango nello stesso nodo fino a che non indovino
+            testoStoria.setText(nodoCorrente.getDescription()+"\n\n"+gestoreIndovinelli.testoIndovinello());
         }
     }
 }
