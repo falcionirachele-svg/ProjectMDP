@@ -1,10 +1,10 @@
 package it.unicam.cs.mpgc.rpg126012.Model;
 public class CombatNode implements StoryNode {
-    public String id;//id del nodo
-    public String text;//testo della storia
-    public StoryNode nextNodeA;
-    public StoryNode nextNodeB;
-    public Enemy enemy;//nemico con cui combatte
+    private String id;
+    private String text;
+    private StoryNode nextNodeA;
+    private StoryNode nextNodeB;
+    private Enemy enemy;
     public CombatNode() {
     }
     public CombatNode(Enemy enemy){

@@ -1,10 +1,10 @@
 package it.unicam.cs.mpgc.rpg126012.Model;
 
 public class RisultatoTurno implements Risultato{
-    public int playerHealth;
-    public int enemyHealth;
-    public int playerDamage;
-    public int enemyDamage;
+    private int playerHealth;
+    private int enemyHealth;
+    private int playerDamage;
+    private int enemyDamage;
     public RisultatoTurno(int playerHealth, int enemyHealth){
         this.playerHealth = playerHealth;
         this.enemyHealth = enemyHealth;

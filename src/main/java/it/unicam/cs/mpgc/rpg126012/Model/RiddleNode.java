@@ -3,8 +3,8 @@ package it.unicam.cs.mpgc.rpg126012.Model;
 import java.util.List;
 
 public class RiddleNode implements StoryNode{
-    public String id;//id del nodo
-    private String text;//testo della storia
+    private String id;
+    private String text;
     private StoryNode nextNodeA;
     private List<String> answers;
     private int rightAnswer;

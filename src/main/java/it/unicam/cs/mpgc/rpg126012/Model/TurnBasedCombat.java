@@ -1,45 +1,33 @@
 package it.unicam.cs.mpgc.rpg126012.Model;
-
+/*Singolo Turno di combattimento*/
 public class TurnBasedCombat {
-    public Character character1;
-    public Character character2;
-    public int dannoRicevuto;
-    public int dannoInflitto;
-    public Risultato risultato;
+    private Character character1;
+    private Character character2;
+    private int dannoRicevuto;
+    private int dannoInflitto;
+    private GestoreTurno gestoreTurno;
     public TurnBasedCombat(){}
     public TurnBasedCombat(Character enemy, Character player) {
         this.character1 = enemy;
         this.character2 = player;
-        //istanzio localmente il risultato del turno
-        risultato= new RisultatoTurno(character2.getMaxHealth(),character1.getMaxHealth());
-    }
+        GestoreTurno gestoreTurno = new GestoreTurno(character2.getMaxHealth(), character2.getCurrentHealth(), character1.getCurrentHealth());
+        }
 
     public Risultato eseguiTurno() {
-        //verifico che nessuno dei due sia senza vita
-        if(risultato.endBattle()){
-            //una volta terminato il combattimento il giocatore torna ad avere la massima salute
-            //per future implementazioni si possono introdurre cure durante la storia e non resettare la salute
-            character2.setCurrentHealth(character2.getMaxHealth());
-            //quando il combattimento finisce restituisco null
-            return null;
-        }
         //il nemico attacca il giocatore
         dannoRicevuto=character1.getDamage();
         character2.setCurrentHealth(character2.getCurrentHealth() - dannoRicevuto);
         //il giocatore attacca il nemico
         dannoInflitto=character2.getDamage();
         character1.setCurrentHealth(character1.getCurrentHealth() - dannoInflitto);
-
-        Risultato risultato= new RisultatoTurno(character2.getCurrentHealth(), character1.getCurrentHealth());
-        risultato.setEnemyDamage(getDannoRicevuto());
-        risultato.setPlayerDamage(getDannoInflitto());
+        //cambio vite correnti post attacco
+        gestoreTurno.setVitaGiocatore(character2.getCurrentHealth());
+        gestoreTurno.setVitaNemico(character1.getCurrentHealth());
         //aggiorno variabile locale con risultato ottenuto
-        this.risultato=risultato;
-        return risultato;
+        return gestoreTurno.getRisultato();
     }
     public boolean fineCombattimento(){
-        if(risultato.endBattle()) return true;
-        else  return false;
+        return gestoreTurno.endBattle();
     }
 
     public int getDannoInflitto() {
@@ -48,8 +36,6 @@ public class TurnBasedCombat {
     public int getDannoRicevuto() {
         return dannoRicevuto;
     }
-    public boolean isPlayerWin() {
-        return risultato.isPlayerWin();
-    }
+    public boolean isPlayerWin() {return gestoreTurno.isPlayerWin();}
 
 }

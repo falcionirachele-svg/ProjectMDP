@@ -1,8 +1,8 @@
 package it.unicam.cs.mpgc.rpg126012.Model;
 
 public class DialogueNode implements StoryNode {
-    public String id;//id del nodo
-    private String text;//testo della storia
+    private String id;
+    private String text;
     private StoryNode nextNodeA;
     private StoryNode nextNodeB;
     public DialogueNode() {

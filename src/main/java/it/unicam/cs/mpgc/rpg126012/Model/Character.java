@@ -1,5 +1,5 @@
 package it.unicam.cs.mpgc.rpg126012.Model;
-
+/*Classe astratta per i personaggi*/
 public abstract class Character {
     protected String id;
     protected String name;
@@ -19,18 +19,14 @@ public abstract class Character {
     public int getMaxHealth() {return health;}
     public int getCurrentHealth() {return currentHealth;}
     public void setCurrentHealth(int currentHealth) {
-        //non posso superare la vita massima
         if(currentHealth>health) this.currentHealth=health;
         else this.currentHealth = currentHealth;
     }
     public boolean isAlive() {return currentHealth > 0;}
     public void setDamage(int damage) {this.damage = damage;}
     public void setName(String name) {this.name = name;}
-    public void setMaxHealth(int maxHealth) {this.health = health;}
-    //in base al tipo di personaggio l'attacco cambia
+    public void setMaxHealth(int health) {this.health = health;}
     public abstract int getDamage();
-    //in base al tipo di personaggio posso avere o no l'attacco critico
     public abstract boolean getColpoCritico();
-    //metodo per capire chi è il giocatore
     public abstract boolean isPlayer();
 }
