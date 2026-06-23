@@ -10,6 +10,7 @@ public abstract class Character {
         this.id = id;
         this.name = name;
         this.health = health;
+        //imposto la salute attuale uguale alla massima
         this.currentHealth = health;
         this.damage = damage;
     }
@@ -17,7 +18,11 @@ public abstract class Character {
     public String getName() {return name;}
     public int getMaxHealth() {return health;}
     public int getCurrentHealth() {return currentHealth;}
-    public void setCurrentHealth(int currentHealth) {this.currentHealth = currentHealth;}
+    public void setCurrentHealth(int currentHealth) {
+        //non posso superare la vita massima
+        if(currentHealth>health) this.currentHealth=health;
+        else this.currentHealth = currentHealth;
+    }
     public boolean isAlive() {return currentHealth > 0;}
     public void setDamage(int damage) {this.damage = damage;}
     public void setName(String name) {this.name = name;}

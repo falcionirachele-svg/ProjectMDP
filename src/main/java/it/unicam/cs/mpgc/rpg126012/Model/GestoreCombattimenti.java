@@ -21,7 +21,7 @@ public class GestoreCombattimenti {
     public String testoBattle() {
         //creo il testo del combattimento
         StringBuilder log=new StringBuilder();
-        log.append("Hai attaccato! Infliggi ").append(turno.getDannoInflitto()).append(" danni.\n");
+        log.append("\nHai attaccato! Infliggi ").append(turno.getDannoInflitto()).append(" danni.\n");
         if(player.getColpoCritico()) log.append("Il colpo è stato critico!\n");
         log.append("Il nemico ti attacca, ricevi ").append(turno.getDannoRicevuto()).append(" danni.\n");
         //salute attuale

@@ -101,18 +101,21 @@
       "id": "orco",
       "name": "Orco",
       "health": 100,
+      "currentHealth": 100,
       "damage": 10
     },
     {
       "id": "drago",
     "name": "Drago",
     "health": 150,
+    "currentHealth": 150,
     "damage": 20
     },
     {
       "id": "gigante",
       "name": "Gigante",
       "health": 150,
+      "currentHealth": 150,
       "damage": 30
     }
   ],
@@ -121,6 +124,7 @@
       "id": "giocatore1",
       "name": "Giocatore1",
       "healt": 180,
+      "currentHealth": 180,
       "damage": 20
     }
   ]

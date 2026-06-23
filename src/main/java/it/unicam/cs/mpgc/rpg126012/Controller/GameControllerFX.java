@@ -111,7 +111,7 @@ public class GameControllerFX {
         CombatNode combatNode=(CombatNode) nodoCorrente;
         GestoreCombattimenti gestoreCombattimento=new GestoreCombattimenti(player, combatNode.getEnemy());
         gestoreCombattimento.eseguiTurno();
-        testoStoria.appendText(gestoreCombattimento.testoBattle());
+        testoStoria.setText(gestoreCombattimento.testoBattle());
         if(gestoreCombattimento.endBattle()){
             if(player.isAlive())impostaBottoni(new String[] {"Avanti"});
             else impostaBottoni(new String[] {"Fine"});
