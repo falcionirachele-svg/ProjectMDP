@@ -1,4 +1,5 @@
 package it.unicam.cs.mpgc.rpg126012.Model;
+/*Nodo di tipo combattimento*/
 public class CombatNode implements StoryNode {
     private String id;
     private String text;
@@ -27,10 +28,6 @@ public class CombatNode implements StoryNode {
     @Override
     public String getDescription() {
         return "\n"+text+"\n";
-    }
-    public String getOptions(){
-        return "1. Attacca\n"
-                +"  2. Scappa";
     }
     @Override
     public StoryNode getNextNode(int choiceIndex) {

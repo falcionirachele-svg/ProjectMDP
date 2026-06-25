@@ -12,18 +12,15 @@ public class TurnBasedCombat {
         this.character2 = player;
         GestoreTurno gestoreTurno = new GestoreTurno(character2.getMaxHealth(), character2.getCurrentHealth(), character1.getCurrentHealth());
         }
-
+    /*Metodo per eseguire un turno di combattimento
+    * @return risultato del turno*/
     public Risultato eseguiTurno() {
-        //il nemico attacca il giocatore
         dannoRicevuto=character1.getDamage();
         character2.setCurrentHealth(character2.getCurrentHealth() - dannoRicevuto);
-        //il giocatore attacca il nemico
         dannoInflitto=character2.getDamage();
         character1.setCurrentHealth(character1.getCurrentHealth() - dannoInflitto);
-        //cambio vite correnti post attacco
         gestoreTurno.setVitaGiocatore(character2.getCurrentHealth());
         gestoreTurno.setVitaNemico(character1.getCurrentHealth());
-        //aggiorno variabile locale con risultato ottenuto
         return gestoreTurno.getRisultato();
     }
     public boolean fineCombattimento(){

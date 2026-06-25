@@ -1,5 +1,5 @@
 package it.unicam.cs.mpgc.rpg126012.Model;
-
+/*Classe per ottenere i risultati ottenuti dal turno di combattimento svolto*/
 public class RisultatoTurno implements Risultato{
     private int playerHealth;
     private int enemyHealth;

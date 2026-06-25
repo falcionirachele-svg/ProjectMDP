@@ -1,5 +1,5 @@
 package it.unicam.cs.mpgc.rpg126012.Model;
-
+/*Nodo di tipo dialogo*/
 public class DialogueNode implements StoryNode {
     private String id;
     private String text;
@@ -16,10 +16,6 @@ public class DialogueNode implements StoryNode {
     @Override
     public String getDescription() {
         return "\n"+text+"\n";
-    }
-    public String getOptions(){
-        return "1. Si\n"
-                +"  2. No";
     }
     public boolean isLastNode(){
         return nextNodeA==null && nextNodeB==null;

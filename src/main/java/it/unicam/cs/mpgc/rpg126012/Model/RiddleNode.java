@@ -1,7 +1,7 @@
 package it.unicam.cs.mpgc.rpg126012.Model;
 
 import java.util.List;
-
+/*Nodo di tipo indovinello*/
 public class RiddleNode implements StoryNode{
     private String id;
     private String text;
@@ -16,13 +16,7 @@ public class RiddleNode implements StoryNode{
     }
     @Override
     public String getDescription(){return "\n"+text+"\n";}
-    @Override
-    public String getOptions(){
-        return "1.\n"+answers.get(0)
-                +"  2."+answers.get(1)
-                +"  3."+answers.get(2)
-                +"  4."+answers.get(3);
-    }
+
     @Override
     public boolean isLastNode(){
         return nextNodeA==null;

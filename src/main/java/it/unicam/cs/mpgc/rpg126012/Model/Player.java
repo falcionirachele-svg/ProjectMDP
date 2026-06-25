@@ -10,8 +10,6 @@ public class Player extends Character {
         this.random=new Random();
     }
 
-    //il danno del giocatore oscilla di 10 punti
-    //c'è poi un 15% di possibilità che il danno raddoppi
     @Override
     public int getDamage() {
         int dannoMin= damage-10;

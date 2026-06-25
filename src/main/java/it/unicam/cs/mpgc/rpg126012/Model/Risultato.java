@@ -1,5 +1,5 @@
 package it.unicam.cs.mpgc.rpg126012.Model;
-/*Contratto per gestire i risultati dei combattimenti*/
+/*Contratto per creare i risultati dei turni di combattimento*/
 public interface Risultato {
     public boolean endBattle();
     public boolean isPlayerWin();

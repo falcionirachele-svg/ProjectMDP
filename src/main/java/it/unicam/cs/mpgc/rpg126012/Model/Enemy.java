@@ -12,7 +12,7 @@ public class Enemy extends Character{
     public boolean isPlayer() {
         return false;
     }
-    //non ha mai colpi critici
+
     @Override
     public boolean getColpoCritico() {
         return false;

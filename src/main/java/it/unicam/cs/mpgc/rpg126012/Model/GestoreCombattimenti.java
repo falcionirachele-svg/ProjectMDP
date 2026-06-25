@@ -11,6 +11,7 @@ public class GestoreCombattimenti {
         //genro un turno di combattimento
         this.turno=new TurnBasedCombat(enemy, player);
     }
+    /*Avvia un turno di battaglia*/
     public void eseguiTurno() {
         turno.eseguiTurno();
         //controllo se il combattimento finisce
@@ -18,18 +19,16 @@ public class GestoreCombattimenti {
             this.endBattle=true;
         }
     }
+    /*Metodo per creare il testo del combattimento
+    * @return Stringa con il testo del combattimento*/
     public String testoBattle() {
-        //creo il testo del combattimento
         StringBuilder log=new StringBuilder();
         log.append("\nHai attaccato! Infliggi ").append(turno.getDannoInflitto()).append(" danni.\n");
         if(player.getColpoCritico()) log.append("Il colpo è stato critico!\n");
         log.append("Il nemico ti attacca, ricevi ").append(turno.getDannoRicevuto()).append(" danni.\n");
-        //salute attuale
         log.append("La tua salute attuale è ").append(player.getCurrentHealth());
         log.append("\nLa salute del nemico è ").append(enemy.getCurrentHealth());
-        //se il combattimento finisce
         if(endBattle){
-            //controllo chi ha vinto
             if(turno.isPlayerWin()){
                 log.append("\n\n Hai Vinto!");
             }
@@ -39,6 +38,8 @@ public class GestoreCombattimenti {
         }
         return log.toString();
     }
+    /*Metodo per verificare se il combattimento è finito
+    * @return booleano che indica se il combattimento è finito*/
     public boolean endBattle() {
         return this.endBattle;
     }

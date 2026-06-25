@@ -4,32 +4,36 @@ import java.util.*;
 /*si occupa di costruire i nodi dal json*/
 public class NodeFactory {
     public final Gson gson = new Gson();
-    //metodo per costruire un array di nemici dal file di nemici json
+    /*metodo per costruire un array di nemici dal file di nemici json
+    * @param enemyArray array di nemici in formato json
+    * @return mappa di nemici con id come chiave*/
     public Map<String, Enemy> buildEnemyArray(JsonArray enemyArray){
         Map<String, Enemy> enemyMap = new HashMap<>();
-        //per ogni elemento nel json array creo una classe enemy e la metto nel map
         for (JsonElement el: enemyArray){
             Enemy e = gson.fromJson(el, Enemy.class);
             enemyMap.put(e.getId(), e);
         }
         return enemyMap;
     }
-    //metodo per costruire un array di player dal file dei player json
+    /*metodo per costruire un array di player dal file dei player json
+    * @param playerArray array di player in formato json
+    * @return mappa di player con id come chiave*/
     public Map<String, Player> buildPlayerArray(JsonArray playerArray){
         Map<String, Player> playerMap= new HashMap<>();
-        //ogni elemento lo vado a creare e lo metto nel map
         for(JsonElement el: playerArray){
             Player p= gson.fromJson(el, Player.class);
             playerMap.put(p.getId(), p);
         }
         return playerMap;
     }
-    //metodo per costruire i nodi del file json
+    /*metodo per costruire i nodi del file json
+    * @param obj oggetto json in formato json
+    * @param enemyMap mappa di nemici con id come chiave
+    * @return nodo costruito
+    * @throws Exception se il tipo di nodo non e' valido*/
     public StoryNode buildNode(JsonObject obj, Map<String, Enemy> enemyMap) throws Exception{
-        //converto le info tipo e id json in stringhe
         String type= obj.get("type").getAsString();
         String id= obj.get("id").getAsString();
-        //in base al tipo di nodo creo il nodo corrispondente
         return switch (type){
             case "combat"->buildCombat(obj, id, enemyMap);
             case "dialogue"->gson.fromJson(obj, DialogueNode.class);
@@ -37,7 +41,12 @@ public class NodeFactory {
             default->throw new Exception("Tipo di nodo non valido"+type);
         };
     }
-    //metodo specifico per costruire nodi combattimento
+    /*metodo per costruire un nodo di combattimento
+    * @param obj oggetto json in formato json
+    * @param id id del nodo
+    * @param enemyMap mappa di nemici con id come chiave
+    * @return nodo di combattimento costruito
+    * @throws Exception se il nemico non e' trovato*/
     private CombatNode buildCombat(JsonObject obj, String id, Map<String, Enemy> enemyMap)
         throws Exception{
         CombatNode combatNode= gson.fromJson(obj, CombatNode.class);

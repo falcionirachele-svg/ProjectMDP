@@ -1,35 +1,27 @@
 package it.unicam.cs.mpgc.rpg126012.Model;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import java.util.*;
 import com.google.gson.Gson;
-
 
 /*classe che si occupa di collegare i nodi creati dal NodeFactory,
 * recupera il nodo di partenza e collega i nodi a quelli successivi*/
 public class StoryLoader {
-    //classe per salvare solo id del nodo e destinazioni
     private static class RawNode{
         String id, nodoA, nodoB;
     }
     private final JsonLoader jsonLoader= new JsonLoader();
     private final NodeFactory nodeFactory= new NodeFactory();
-
+    /*Metodo per caricare il file json e creare lo StoryData
+    * @param jsonPath percorso del file json
+    * @return lo StoryData creato*/
     public StoryData load(String jsonPath) throws Exception{
-        //carica il file json nella variabile root
         JsonObject root= jsonLoader.loadFile(jsonPath);
-        //uso il metodo di nodefactory che mi restituisce la mappa di nemici
         Map<String, Enemy> enemyMap=nodeFactory.buildEnemyArray(root.getAsJsonArray("enemy"));
-        //uso il metodo di nodefactory per restituire una mappa di player che potrò usare nelle future implementazioni
         Map<String, Player> playerMap= nodeFactory.buildPlayerArray(root.getAsJsonArray("player"));
-        //richiamo un metodo che mi crea una mappa di nodi
         Map<String, StoryNode> nodeMap= buildNodeMap(root, enemyMap);
-        //chiamo un metodo che mi crea i collegamenti tra i vari nodi
         linkPointers(nodeMap, root);
-        //per trovare il nodo di inizio:
         StoryNode startNode= getStartNode(nodeMap, root);
-        //con queste informazioni genero lo StoryData
         return new StoryData(nodeMap, startNode);
     }
     //metodo per ottenere la mappa dei player
@@ -39,11 +31,13 @@ public class StoryLoader {
         return playerMap;
 
     }
-    //metodo per creare la mappa di nodi
+    /*Metodo per creare la mappa di nodi
+    * @param root oggetto json contenente i nodi
+    * @param enemyMap mappa dei nemici
+    * @return mappa dei nodi*/
     private Map<String, StoryNode> buildNodeMap(JsonObject root, Map<String, Enemy> enemyMap)
         throws Exception{
         Map<String, StoryNode> nodeMap=new HashMap<>();
-        //prendo tutti gli elementi nodi, li creo con il nodefactory e li aggiungo alla mappa
         for(JsonElement el: root.getAsJsonArray("nodes")){
             StoryNode node= nodeFactory.buildNode(el.getAsJsonObject(), enemyMap);
             nodeMap.put(node.getId(), node);
@@ -51,32 +45,37 @@ public class StoryLoader {
         return nodeMap;
     }
 
-    //metodo per puntatori dei nodi
+    /*Metodo per gestire i puntatori dei nodi
+    * @param nodeMap mappa dei nodi
+    * @param root oggetto json contenente i nodi*/
     private void linkPointers(Map<String, StoryNode> nodeMap, JsonObject root) throws Exception{
         Gson gson= new Gson();
-        //per tutti i nodi
         for (JsonElement el: root.getAsJsonArray("nodes")){
             RawNode raw= gson.fromJson(el, RawNode.class);
-            //recupero nodo in memoria
             StoryNode node=nodeMap.get(raw.id);
-            //imposta i nodi successivi letti dal json
             node.setNodoA(resolve(nodeMap, raw.nodoA, raw.id, "nodoA"));
             node.setNodoB(resolve(nodeMap, raw.nodoB, raw.id, "nodoB"));
         }
     }
-    //metodo per controlli, vede se l'id è nullo (es. file finale) e resistuisce null
-    //dice se c'è un errore nel file json
+    /*metodo per controlli
+    * @param nodeMap mappa dei nodi
+    * @param targetId id del prossimo nodo
+    * @param sourceId id del nodo corrente
+    * @param campo nome del campo del json
+    * @return il prossimo nodo, null se non esiste*/
     private StoryNode resolve(Map<String, StoryNode> nodeMap, String targetId, String sourceId, String campo) throws Exception{
-        if(targetId==null){return null;}//id prossimo nodo nullo
+        if(targetId==null){return null;}
         StoryNode target= nodeMap.get(targetId);
         if(target==null){
             throw new Exception(campo+" non trovato: "+targetId);
         }
         return target;
     }
-    //meotodo per recuperare il nodo iniziale
+    /*Metodo per recuperare il nodo iniziale
+    * @param nodeMap mappa dei nodi
+    * @param root oggetto json contenente i nodi
+    * @return il nodo iniziale*/
     private StoryNode getStartNode(Map<String, StoryNode> nodeMap, JsonObject root) throws Exception{
-        //verifico che la chiave di inizio ci sia nel json
         if (!root.has("start") || root.get("start").isJsonNull()) {
             throw new Exception("Errore nel JSON: manca la chiave 'start'!");
         }

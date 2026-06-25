@@ -1,5 +1,5 @@
 package it.unicam.cs.mpgc.rpg126012.Model;
-/*interfaccia che contiene le regole del turno di combattimento*/
+/*interfaccia che contiene le regole per la gestione del turno di combattimento*/
 public interface TurnPolicy {
     public void resetLifePlayer();
     public boolean endBattle();

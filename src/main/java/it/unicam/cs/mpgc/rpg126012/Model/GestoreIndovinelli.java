@@ -5,7 +5,6 @@ public class GestoreIndovinelli {
     private RiddleNode riddleNode;
     public GestoreIndovinelli(RiddleNode riddleNode, int answer) {
         this.riddleNode=riddleNode;
-        //verifico che l'indovinello sia stato indovinato
         this.indovinato=riddleNode.isRightAnswer(answer);
     }
     public boolean isIndovinato() {

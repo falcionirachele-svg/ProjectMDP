@@ -10,7 +10,6 @@ public abstract class Character {
         this.id = id;
         this.name = name;
         this.health = health;
-        //imposto la salute attuale uguale alla massima
         this.currentHealth = health;
         this.damage = damage;
     }
