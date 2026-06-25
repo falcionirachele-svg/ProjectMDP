@@ -18,8 +18,7 @@ public abstract class Character {
     public int getMaxHealth() {return health;}
     public int getCurrentHealth() {return currentHealth;}
     public void setCurrentHealth(int currentHealth) {
-        if(currentHealth>health) this.currentHealth=health;
-        else this.currentHealth = currentHealth;
+        this.currentHealth = Math.min(currentHealth, health);
     }
     public boolean isAlive() {return currentHealth > 0;}
     public void setDamage(int damage) {this.damage = damage;}

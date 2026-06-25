@@ -1,20 +1,18 @@
 package it.unicam.cs.mpgc.rpg126012.Model;
-
+/*Classe per gestire un unico combattimento dando le info da visualizzare*/
 public class GestoreCombattimenti {
-    private Player player;
-    private Enemy enemy;
-    private TurnBasedCombat turno;
+    private final Player player;
+    private final Enemy enemy;
+    private final TurnBasedCombat turno;
     private boolean endBattle=false;
     public GestoreCombattimenti(Player player, Enemy enemy) {
         this.player = player;
         this.enemy = enemy;
-        //genro un turno di combattimento
         this.turno=new TurnBasedCombat(enemy, player);
     }
     /*Avvia un turno di battaglia*/
     public void eseguiTurno() {
         turno.eseguiTurno();
-        //controllo se il combattimento finisce
         if(turno.fineCombattimento()){
             this.endBattle=true;
         }

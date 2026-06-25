@@ -10,7 +10,7 @@ public class TurnBasedCombat {
     public TurnBasedCombat(Character enemy, Character player) {
         this.character1 = enemy;
         this.character2 = player;
-        GestoreTurno gestoreTurno = new GestoreTurno(character2.getMaxHealth(), character2.getCurrentHealth(), character1.getCurrentHealth());
+        this.gestoreTurno = new GestoreTurno(character2.getMaxHealth(), character2.getCurrentHealth(), character1.getCurrentHealth());
         }
     /*Metodo per eseguire un turno di combattimento
     * @return risultato del turno*/

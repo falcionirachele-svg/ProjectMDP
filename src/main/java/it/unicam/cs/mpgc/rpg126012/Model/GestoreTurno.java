@@ -1,5 +1,5 @@
 package it.unicam.cs.mpgc.rpg126012.Model;
-/*Classe per gestire la informazione dei turni di un combattimento*/
+/*Classe per impostare la info dei turni di un combattimento*/
 public class GestoreTurno implements TurnPolicy{
     private int vitaGiocatoreMax;
     private int vitaGiocatore;

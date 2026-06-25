@@ -17,6 +17,9 @@ public class DialogueNode implements StoryNode {
     public String getDescription() {
         return "\n"+text+"\n";
     }
+    public void setDescription(String text) {
+        this.text = text;
+    }
     public boolean isLastNode(){
         return nextNodeA==null && nextNodeB==null;
     }

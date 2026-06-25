@@ -29,11 +29,15 @@ public class CombatNode implements StoryNode {
     public String getDescription() {
         return "\n"+text+"\n";
     }
+    /*Mi restituisce il nodo successivo
+    * @param choiceIndex l'indice della scelta (0 o 1)
+    * @return il nodo successivo
+    * @throws IllegalArgumentException se choiceIndex non è 0 o 1*/
     @Override
     public StoryNode getNextNode(int choiceIndex) {
         if(choiceIndex==0) return nextNodeA;
         if(choiceIndex==1) return nextNodeB;
-        return null;
+        else throw new IllegalArgumentException("choiceIndex deve essere 0 o 1");
     }
     public StoryNode getNextNodeA(){
         return nextNodeA;
@@ -49,6 +53,9 @@ public class CombatNode implements StoryNode {
     }
     public void setNodoB(StoryNode nodo){
         this.nextNodeB=nodo;
+    }
+    public void setText(String text) {
+        this.text = text;
     }
 
 }
