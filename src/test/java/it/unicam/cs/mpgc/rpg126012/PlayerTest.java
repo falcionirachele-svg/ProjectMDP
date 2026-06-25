@@ -48,11 +48,5 @@ public class PlayerTest {
         assertTrue(percentuale >= 13.0 && percentuale <= 17.0,
                 "Percentuale ottenuta: " + percentuale + "%, prevista 15%");
     }
-    @Test
-    @DisplayName("Test di getColpoCritico")
-    public void testGetColpoCritico() {
-        player.getDamage();
-        assertTrue(player.getColpoCritico());
-    }
 
 }
