@@ -24,14 +24,17 @@ public class RiddleNode implements StoryNode{
     @Override
     public StoryNode getNextNode(int choiceIndex) {
         if(choiceIndex==0) return nextNodeA;
-        return null;
+        if(choiceIndex==1) return null;
+        else throw new IllegalArgumentException("choiceIndex deve essere 0 o 1");
     }
 
     public String[] arrayAnswers(){
-        if(answers==null) return  new String[0];
+        if(answers==null) throw new IllegalArgumentException("La lista di risposte non può essere null");
         return answers.toArray(new String[0]);
     }
     public boolean isRightAnswer(int answer){
+        if(answer<0 || answer>=answers.size())
+            throw new IllegalArgumentException("answer deve essere compreso tra 0 e "+(answers.size()-1));
         return answer==rightAnswer;
     }
     public void setRightAnswer(int rightAnswer) {
@@ -43,9 +46,7 @@ public class RiddleNode implements StoryNode{
     public void setText(String text) {
         this.text = text;
     }
-    public int getRightAnswer() {
-        return rightAnswer;
-    }
+    public int getRightAnswer() {return rightAnswer;}
     @Override
     public void setNodoA(StoryNode nodo){
         this.nextNodeA= nodo;

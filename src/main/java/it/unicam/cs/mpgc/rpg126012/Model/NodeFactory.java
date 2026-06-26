@@ -11,6 +11,8 @@ public class NodeFactory {
         Map<String, Enemy> enemyMap = new HashMap<>();
         for (JsonElement el: enemyArray){
             Enemy e = gson.fromJson(el, Enemy.class);
+            if(e==null){throw new NullPointerException("Nemico non trovato");}
+            if(enemyMap.containsKey(e.getId())) throw new IllegalArgumentException("Id duplicato");
             enemyMap.put(e.getId(), e);
         }
         return enemyMap;
@@ -22,6 +24,8 @@ public class NodeFactory {
         Map<String, Player> playerMap= new HashMap<>();
         for(JsonElement el: playerArray){
             Player p= gson.fromJson(el, Player.class);
+            if(p==null){throw new NullPointerException("Player non trovato");}
+            if(playerMap.containsKey(p.getId())) throw new IllegalArgumentException("Id duplicato");
             playerMap.put(p.getId(), p);
         }
         return playerMap;

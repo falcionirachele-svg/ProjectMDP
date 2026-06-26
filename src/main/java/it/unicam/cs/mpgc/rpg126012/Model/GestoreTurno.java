@@ -15,6 +15,12 @@ public class GestoreTurno implements TurnPolicy{
     public void setVitaNemico(int vitaNemico){
         this.vitaNemico=vitaNemico;
     }
+    public int getVitaGiocatore(){
+        return vitaGiocatore;
+    }
+    public int getVitaNemico(){
+        return vitaNemico;
+    }
     public void resetLifePlayer(){
         this.vitaGiocatore=vitaGiocatoreMax;
     }

@@ -27,7 +27,7 @@ public class DialogueNode implements StoryNode {
     public StoryNode getNextNode(int choiceIndex) {
         if(choiceIndex==0) return nextNodeA;
         if(choiceIndex==1) return nextNodeB;
-        return null;
+        else throw new IllegalArgumentException("choiceIndex deve essere 0 o 1");
     }
     public void setNodoA(StoryNode nodo){
         this.nextNodeA= nodo;

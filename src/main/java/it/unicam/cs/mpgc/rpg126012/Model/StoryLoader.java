@@ -18,18 +18,10 @@ public class StoryLoader {
     public StoryData load(String jsonPath) throws Exception{
         JsonObject root= jsonLoader.loadFile(jsonPath);
         Map<String, Enemy> enemyMap=nodeFactory.buildEnemyArray(root.getAsJsonArray("enemy"));
-        Map<String, Player> playerMap= nodeFactory.buildPlayerArray(root.getAsJsonArray("player"));
         Map<String, StoryNode> nodeMap= buildNodeMap(root, enemyMap);
         linkPointers(nodeMap, root);
         StoryNode startNode= getStartNode(nodeMap, root);
         return new StoryData(nodeMap, startNode);
-    }
-    //metodo per ottenere la mappa dei player
-    /*per implementazioni future: mi permette di ottenere dei personaggi standard nel json,
-    * che possono essere selezionati in futuro dalla view */
-    public Map<String, Player> getAlPlayerMap(Map<String, Player>playerMap){
-        return playerMap;
-
     }
     /*Metodo per creare la mappa di nodi
     * @param root oggetto json contenente i nodi
@@ -53,8 +45,8 @@ public class StoryLoader {
         for (JsonElement el: root.getAsJsonArray("nodes")){
             RawNode raw= gson.fromJson(el, RawNode.class);
             StoryNode node=nodeMap.get(raw.id);
-            node.setNodoA(resolve(nodeMap, raw.nodoA, raw.id, "nodoA"));
-            node.setNodoB(resolve(nodeMap, raw.nodoB, raw.id, "nodoB"));
+            if(raw.nodoA!=null)node.setNodoA(resolve(nodeMap, raw.nodoA, raw.id, "nodoA"));
+            if(raw.nodoB!=null)node.setNodoB(resolve(nodeMap, raw.nodoB, raw.id, "nodoB"));
         }
     }
     /*metodo per controlli
