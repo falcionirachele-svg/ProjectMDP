@@ -1,7 +1,7 @@
 package it.unicam.cs.mpgc.rpg126012;
 
-import it.unicam.cs.mpgc.rpg126012.Model.*;
-import org.junit.jupiter.api.BeforeEach;
+import it.unicam.cs.mpgc.rpg126012.Model.Combatt.GestoreTurno;
+import it.unicam.cs.mpgc.rpg126012.Model.Combatt.Risultato;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

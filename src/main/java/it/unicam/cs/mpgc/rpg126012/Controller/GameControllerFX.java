@@ -1,6 +1,11 @@
 package it.unicam.cs.mpgc.rpg126012.Controller;
 
-import it.unicam.cs.mpgc.rpg126012.Model.*;
+import it.unicam.cs.mpgc.rpg126012.Model.Character.Player;
+import it.unicam.cs.mpgc.rpg126012.Model.Story.CombatNode;
+import it.unicam.cs.mpgc.rpg126012.Model.Combatt.GestoreCombattimenti;
+import it.unicam.cs.mpgc.rpg126012.Model.Story.GestoreIndovinelli;
+import it.unicam.cs.mpgc.rpg126012.Model.Story.RiddleNode;
+import it.unicam.cs.mpgc.rpg126012.Model.Story.StoryNode;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;

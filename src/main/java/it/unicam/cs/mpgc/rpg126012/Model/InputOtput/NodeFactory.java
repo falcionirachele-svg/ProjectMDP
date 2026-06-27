@@ -1,5 +1,12 @@
-package it.unicam.cs.mpgc.rpg126012.Model;
+package it.unicam.cs.mpgc.rpg126012.Model.InputOtput;
 import com.google.gson.*;
+import it.unicam.cs.mpgc.rpg126012.Model.Character.Enemy;
+import it.unicam.cs.mpgc.rpg126012.Model.Character.Player;
+import it.unicam.cs.mpgc.rpg126012.Model.Story.CombatNode;
+import it.unicam.cs.mpgc.rpg126012.Model.Story.DialogueNode;
+import it.unicam.cs.mpgc.rpg126012.Model.Story.RiddleNode;
+import it.unicam.cs.mpgc.rpg126012.Model.Story.StoryNode;
+
 import java.util.*;
 /*si occupa di costruire i nodi dal json*/
 public class NodeFactory {

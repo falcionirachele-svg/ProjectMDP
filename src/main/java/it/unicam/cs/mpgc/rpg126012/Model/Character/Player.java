@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg126012.Model;
+package it.unicam.cs.mpgc.rpg126012.Model.Character;
 
 import java.util.Random;
 

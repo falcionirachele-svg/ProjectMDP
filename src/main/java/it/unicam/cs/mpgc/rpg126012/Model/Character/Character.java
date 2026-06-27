@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg126012.Model;
+package it.unicam.cs.mpgc.rpg126012.Model.Character;
 /*Classe astratta per i personaggi*/
 public abstract class Character {
     protected String id;

@@ -1,4 +1,5 @@
-package it.unicam.cs.mpgc.rpg126012.Model;
+package it.unicam.cs.mpgc.rpg126012.Model.Story;
+
 /*Classe per gestire un unico indovinello dando le info da visualizzare*/
 public class GestoreIndovinelli {
     private boolean indovinato;

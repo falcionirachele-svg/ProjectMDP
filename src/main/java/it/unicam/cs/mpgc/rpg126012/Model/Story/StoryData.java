@@ -1,4 +1,5 @@
-package it.unicam.cs.mpgc.rpg126012.Model;
+package it.unicam.cs.mpgc.rpg126012.Model.Story;
+
 import java.util.Map;
 /*classe che contiene la mappa degli story node e il nodo iniziale */
 public class StoryData {

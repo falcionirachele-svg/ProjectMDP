@@ -1,8 +1,8 @@
-package it.unicam.cs.mpgc.rpg126012.Model;
+package it.unicam.cs.mpgc.rpg126012.Model.Story;
 
 import java.util.List;
 /*Nodo di tipo indovinello*/
-public class RiddleNode implements StoryNode{
+public class RiddleNode implements StoryNode {
     private String id;
     private String text;
     private StoryNode nextNodeA;

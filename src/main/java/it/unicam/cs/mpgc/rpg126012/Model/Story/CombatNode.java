@@ -1,4 +1,7 @@
-package it.unicam.cs.mpgc.rpg126012.Model;
+package it.unicam.cs.mpgc.rpg126012.Model.Story;
+
+import it.unicam.cs.mpgc.rpg126012.Model.Character.Enemy;
+
 /*Nodo di tipo combattimento*/
 public class CombatNode implements StoryNode {
     private String id;

@@ -1,9 +1,11 @@
 package it.unicam.cs.mpgc.rpg126012;
+import it.unicam.cs.mpgc.rpg126012.Model.Character.Enemy;
+import it.unicam.cs.mpgc.rpg126012.Model.Story.CombatNode;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.BeforeEach;
-import it.unicam.cs.mpgc.rpg126012.Model.*;
+
 public class CombatNodeTest {
     private CombatNode combatNode;
     private Enemy enemy;

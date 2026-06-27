@@ -1,4 +1,8 @@
-package it.unicam.cs.mpgc.rpg126012.Model;
+package it.unicam.cs.mpgc.rpg126012.Model.Combatt;
+
+import it.unicam.cs.mpgc.rpg126012.Model.Character.Enemy;
+import it.unicam.cs.mpgc.rpg126012.Model.Character.Player;
+
 /*Classe per gestire un unico combattimento dando le info da visualizzare*/
 public class GestoreCombattimenti {
     private final Player player;

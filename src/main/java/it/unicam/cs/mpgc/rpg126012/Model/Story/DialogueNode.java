@@ -1,4 +1,5 @@
-package it.unicam.cs.mpgc.rpg126012.Model;
+package it.unicam.cs.mpgc.rpg126012.Model.Story;
+
 /*Nodo di tipo dialogo*/
 public class DialogueNode implements StoryNode {
     private String id;
