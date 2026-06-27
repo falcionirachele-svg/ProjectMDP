@@ -35,14 +35,14 @@
       "type": "combat",
       "text": "Un enorme drago rosso ti sbarra la strada.",
       "nemico": "drago",
-      "nodoA": "fine",
+      "nodoA": "mago",
       "nodoB": "taverna"
     },
     {
       "id": "oggetto",
       "type": "dialogue",
       "text": "Vedi una gemma brillante. Provi a prenderla?",
-      "nodoA": "fine",
+      "nodoA": "gigante",
       "nodoB": "taverna"
     },
     {
@@ -57,8 +57,8 @@
       "type": "combat",
       "text": "Ti ritrovi un gigante in mezzo al cammino.",
       "nemico": "gigante",
-      "nodoA": "mago",
-      "nodoB": "oggetto"
+      "nodoA": "fine",
+      "nodoB": "nano"
     },
     {
       "id": "fine",
@@ -117,15 +117,6 @@
       "health": 150,
       "currentHealth": 150,
       "damage": 30
-    }
-  ],
-  "player": [
-    {
-      "id": "giocatore1",
-      "name": "Giocatore1",
-      "healt": 180,
-      "currentHealth": 180,
-      "damage": 20
     }
   ]
 }
