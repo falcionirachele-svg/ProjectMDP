@@ -33,12 +33,10 @@ public class GameControllerFX {
         }
         //se è un nodo combattimento
         else if(nodoCorrente instanceof CombatNode){
-            CombatNode combatNode = (CombatNode) nodoCorrente;
             impostaBottoni(new String[] {"Attacca", "Fuggi"});
         }
         //se è un nodo indovinello
-        else if(nodoCorrente instanceof RiddleNode){
-            RiddleNode riddleNode = (RiddleNode) nodoCorrente;
+        else if(nodoCorrente instanceof RiddleNode riddleNode){
             impostaBottoni(riddleNode.arrayAnswers());
         }
         //nodo dialogo
@@ -68,7 +66,6 @@ public class GameControllerFX {
         //vedo se è il nodo finale
         if(comando.equals("Fine")){
             System.exit(0);
-            return;
         }  else if (comando.equals("Avanti"))  {
             aggiornaSchermata(nodoCorrente.getNextNode(0));
         }

@@ -1,0 +1,30 @@
+
+.main-container {
+    -fx-background-color: #D8BFD8;
+}
+
+#titoloGioco {
+    -fx-text-fill: #dd13f0;
+    -fx-font-family: "Candara";
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+}
+
+#testoStoria {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 22px;
+    -fx-border-color: #f1c40f;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+}
+
+.scelta-button {
+    -fx-background-color: #B0E0E6;
+    -fx-font-size: 18px;
+    -fx-cursor: hand;
+}
+
+.scelta-button:hover {
+    -fx-background-color: #87CEEB;
+}
